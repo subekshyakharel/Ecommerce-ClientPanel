@@ -1,0 +1,58 @@
+#API list
+
+@rootUrl = http://localhost:3000
+
+### Check server status
+GET {{rootUrl}}
+
+### post user
+POST {{rootUrl}}/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "fName":"subekshya",
+    "lName":"kharel",
+    "email":"subekshyakharel922@gmail.com",
+    "phone":12344,
+    "password":"123"
+}
+
+### login user
+POST {{rootUrl}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email":"subekshyakharel922@gmail.com",
+    "password":"123"
+}
+
+### get user profile
+GET {{rootUrl}}/api/v1/users/profile
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1YmVrc2h5YWtoYXJlbDkyMkBnbWFpbC5jb20iLCJpYXQiOjE3NTU1NzU0NjQsImV4cCI6MTc1NTY2MTg2NH0.8MGR_wFfiSAOxFXvPhUTaa62VW4DpBTmfh8kVHyxlZw
+
+### renew jwt
+GET {{rootUrl}}/api/v1/auth/renew-jwt
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1YmVrc2h5YWtoYXJlbDkyMkBnbWFpbC5jb20iLCJpYXQiOjE3NTU1ODEyNjEsImV4cCI6MTc1ODE3MzI2MX0.ZxYvAg43J_0rDzSEWTyXOzhumT_jP_Hbgc4fLlulT8U
+
+
+#### =============order api ==========
+### insert ordered product
+POST {{rootUrl}}/api/v1/order
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1YmVrc2h5YWtoYXJlbDkyMkBnbWFpbC5jb20iLCJpYXQiOjE3NTU1OTAwNjUsImV4cCI6MTc1NTY3NjQ2NX0.fwoYoupGFQCgmhNQqcg-0_UWxlUqQLzp80TruGyL9lE
+
+[
+    {
+        "productId":"689f4ffb8ebc7c64e6f1b8d1",
+        "thumbnail":"https://res.cloudinary.com/dgjcfs1qn/image/upload/v1755271018/products/xyalbibwcwuw5omzpmyt.png",
+        "productTitle":"Denim skirt",
+        "productSlug":"denim-skirt"
+    }
+]
+
+### get order product
+GET {{rootUrl}}/api/v1/order
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1YmVrc2h5YWtoYXJlbDkyMkBnbWFpbC5jb20iLCJpYXQiOjE3NTg2MDA0MTAsImV4cCI6MTc1ODY4NjgxMH0.21Gpq4mBOMBC1kG1R3QNjtai6KT7iAa8bobdIRmk4LY
+
+### Get all order product 
+GET {{rootUrl}}/api/v1/order/all-order

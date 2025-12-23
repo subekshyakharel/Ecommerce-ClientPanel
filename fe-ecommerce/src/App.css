@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&family=Playwrite+DE+Grund:wght@100..400&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a{
+  color: inherit !important;
+  text-decoration: none !important;
+}
+ul {
+  list-style: none;
+}
+body{
+  font-family: "Mozilla Headline", sans-serif;
+  font-size: 14px;
+}
+
+
+
+.nav-wrapper{
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.categories {
+  padding-left: 10px;
+  align-items: center;
+  font-family: "Mozilla Headline", sans-serif;
+  font-size: 14px;
+}
+
+
+.main{
+  min-height: 88vh;
+}
+
+.footer {
+  background: white;
+  padding: 10px;
+}
+
+/* card style  */
+.cardStyle{
+  cursor: pointer;
+}
+.cardStyle:hover{
+ border: 1px solid black;
+}
+.cardStyle:active{
+  scale: 0.999;
+}
+/* card style end  */
+
+/* cart style  */
+.cart-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cart-content .left {
+  flex: 1 1 60%;
+}
+
+.cart-content .right {
+  flex: 1 1 35%;
+  min-width: 280px;
+}
+
+.cart-item-img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  object-fit: cover;
+}
+
+.cart-count{
+  position: relative;
+}
+
+.cart-count span{
+  background: red;
+  color: white;
+  border-radius: 10px;
+  padding: 2px;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 30px;
+  left: 20px;
+}
+
+/* cart style end  */
+
+/* breadcrum  */
+.breadcrumb .breadcrumb-item + .breadcrumb-item::before{
+content: ">";
+}
+
+/* banner start  */
+.banner {
+  background: rgba(170, 168, 168, 0.404);
+  font-family: "Epunda Slab", serif;
+   font-style: normal;
+   
+}
+.banner h3 {
+  font-weight: bold;
+  font-size: 30px;
+}
+.banner p {
+  font-size: 18px;
+}
+/* banner end   */
+
+@media screen and (max-width: 768px) {
+  .signup-image{
+    display: none;
+  }
+   .cart-content {
+    flex-direction: column;
+  }
+
+  .cart-content .left,
+  .cart-content .right {
+    flex: 1 1 100%;
+  }
+
+  .d-flex.justify-content-between {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .d-flex.align-items-center.gap-2 {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}

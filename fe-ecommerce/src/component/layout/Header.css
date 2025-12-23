@@ -1,0 +1,53 @@
+.parent-category {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.subCatList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 500px;
+  background: #fff;
+  border: 1px solid #ddd;
+  z-index: 1000;
+}
+
+.subCatList p {
+  margin: 5px 0;
+}
+
+.subCatList a {
+  text-decoration: none;
+  color: #333;
+}
+
+.subCatList a:hover {
+  color: #000;
+  font-weight: 500;
+}
+
+.sidebar {
+  background: #f8fafca6; /* very light gray */
+  color: #111827; /* dark text */
+  border-right: 1px solid #e5e7eb; /* subtle separation */
+}
+
+.sidebar h4 {
+  color: #1e293b; /* slightly darker for emphasis */
+}
+
+.sidebar a {
+  display: block;
+  padding: 8px 12px;
+  color: #374151;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar a:hover {
+  background: #e5e7eb; /* soft hover effect */
+  color: #111827;
+}
