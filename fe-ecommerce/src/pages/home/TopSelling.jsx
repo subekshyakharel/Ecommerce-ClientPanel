@@ -14,7 +14,7 @@ const TopSelling = () => {
 
         <div className="d-flex justify-content-center mt-4 flex-wrap gap-4">
           {allProduct.map((product) => (
-            <Link to={"/product/" + product.slug} key={product._id}>
+            <Link to={"/product/" + product._id} key={product._id}>
               <CustomCard
                 
                 img={product.imgUrl}

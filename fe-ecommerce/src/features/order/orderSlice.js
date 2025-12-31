@@ -11,11 +11,14 @@ const orderSlice = createSlice({
     setMyOrder: (state, { payload }) => {
       state.myOrder = payload;
     },
+    removeOrder: (state, { payload }) => {
+      state.myOrder = state.myOrder.filter((order) => order._id !== payload);
+    },
   },
 });
 
 const { reducer, actions } = orderSlice;
 
-export const { setMyOrder } = actions;
+export const { setMyOrder, removeOrder } = actions;
 
 export default reducer;

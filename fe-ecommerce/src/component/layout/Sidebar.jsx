@@ -6,9 +6,9 @@ import { setUser } from "../../features/user/userSlice";
 import { IoIosLogOut } from "react-icons/io";
 
 const Sidebar = () => {
-//   const { user } = useSelector((state) => state.userInfo);
-const dispatch = useDispatch();
- const handleOnLogout = () => {
+  //   const { user } = useSelector((state) => state.userInfo);
+  const dispatch = useDispatch();
+  const handleOnLogout = () => {
     logoutUserApi();
 
     sessionStorage.removeItem("accessJWT");
@@ -17,32 +17,27 @@ const dispatch = useDispatch();
   };
   return (
     <Stack gap={3} className="">
-      <div className="p-2">
+      {/* <div className="p-2">
         <Link to="/user" className="nav-link">
           Dashboard
         </Link>
-      </div>
+      </div> */}
 
       <div className="p-2">
         <Link to="/user/order-history" className="nav-link">
           Order History
         </Link>
       </div>
-      
 
-      <div className="p-2">
+      {/* <div className="p-2">
         <Link to="/user/profile" className="nav-link">
           Profile
         </Link>
-      </div>
+      </div> */}
       <div className="p-2">
-                             <Link
-                               to="/"
-                               onClick={handleOnLogout}
-                               className="text-dark"
-                             >
-                              Logout <IoIosLogOut size={20} />
-                             </Link>
+        <Link to="/" onClick={handleOnLogout} className="text-dark">
+          Logout <IoIosLogOut size={20} />
+        </Link>
       </div>
     </Stack>
   );

@@ -17,9 +17,11 @@ app.use(express.json());
 import authRoute from "./src/routes/authRoute.js";
 import userRoute from "./src/routes/userRoute.js";
 import orderRoute from "./src/routes/orderRoute.js";
+import reviewRoute from "./src/routes/reviewRoute.js";
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/order", orderRoute);
+app.use("/api/v1/review", reviewRoute);
 
 // Server status route
 app.get("/", (req, res) => {

@@ -56,3 +56,38 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1YmVrc
 
 ### Get all order product 
 GET {{rootUrl}}/api/v1/order/all-order
+
+### update order status
+PATCH {{rootUrl}}/api/v1/order/68d7466bbc81078028cc16f2
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1YmVrc2h5YWtoYXJlbDkyMkBnbWFpbC5jb20iLCJpYXQiOjE3NjY0OTEyMzcsImV4cCI6MTc2NjU3NzYzN30.9VkqepWiSIaBSs4TYYnb_n6v9RxINSNDqsFwp4kxy3Y
+Content-Type: application/json
+
+{
+  "status": "processing"
+}
+
+### delete order
+DELETE {{rootUrl}}/api/v1/order/694a72b6e61ad5939ed16adc
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1YmVrc2h5YWtoYXJlbDkyMkBnbWFpbC5jb20iLCJpYXQiOjE3NjcwMTM3MjcsImV4cCI6MTc2NzEwMDEyN30.D4IbMiHwSnMO_SdcB7mYgL6F1GOlepZhB4Qac0EMNQU
+
+
+##############review section ############
+###insert review
+POST {{rootUrl}}/api/v1/review/
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1YmVrc2h5YWtoYXJlbDkyMkBnbWFpbC5jb20iLCJpYXQiOjE3NjY5MjY0MjUsImV4cCI6MTc2NzAxMjgyNX0.oa8XFRapRFVYy_rU8kCG8ebNAY8p1Z57Drq3IiindNU
+Content-Type: application/json
+
+{
+    "productId":"68cf7a9e80f69650f55b47ad",
+    "orderId":"68d7466bbc81078028cc16f2",
+    "title":"review product",
+    "reviewMessage":"I have review this product",
+    "rating":3.4
+}
+
+### get single product Reviews
+GET {{rootUrl}}/api/v1/review/68cf7a9e80f69650f55b47ad
+
+### get All the product with reviews
+GET {{rootUrl}}/api/v1/order/getProductReview
+

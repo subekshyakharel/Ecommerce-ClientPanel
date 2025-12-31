@@ -37,3 +37,6 @@ export const TOKEN_REQ = TOKEN.required();
 
 export const DATE = Joi.date();
 export const DATE_REQ = DATE.required();
+
+export const _ID = Joi.string();
+export const _ID_REQ = _ID.required();

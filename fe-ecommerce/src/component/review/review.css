@@ -1,0 +1,70 @@
+.review-wrapper {
+  margin-top: 30px;
+}
+
+/* Card */
+.review-card {
+  background: #e7e5e5;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+/* Layout */
+.review-content {
+  display: flex;
+  gap: 15px;
+}
+
+/* Avatar */
+.review-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Body */
+.review-body {
+  flex: 1;
+}
+
+/* Header */
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-header h5 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Stars */
+.review-rating {
+  margin: 5px 0;
+}
+
+.stars {
+  color: #facc15;
+  font-size: 1rem;
+}
+
+/* Message */
+.review-message {
+  margin-top: 8px;
+  color: #374151;
+  line-height: 1.6;
+}

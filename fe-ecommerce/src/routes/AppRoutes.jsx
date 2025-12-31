@@ -12,6 +12,7 @@ import Allproduct from "../pages/home/Allproduct";
 import CategoryPage from "../pages/category/categoryPage";
 import OrderHistory from "../pages/order/OrderHistory";
 import Profile from "../pages/profile/Profile";
+import LeaveReview from "../pages/review/LeaveReview";
 
 const AppRoutes = () => {
   return (
@@ -19,7 +20,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<DefaultLayout />} >
         <Route index element={<Home/>} />
-        <Route path="/product/:slug" element={<ProductLandingPage/>}/>
+        <Route path="/product/:_id" element={<ProductLandingPage/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/cart" element={<Cart />} />
@@ -33,6 +34,7 @@ const AppRoutes = () => {
         <Route index element={<Dashboard/>}/>
         <Route path="order-history" element={<OrderHistory/>}/>
         <Route path="profile" element={<Profile/>}/>
+        <Route path="leave-review" element={<LeaveReview/>}/>
         </Route>
       </Routes>
     </>

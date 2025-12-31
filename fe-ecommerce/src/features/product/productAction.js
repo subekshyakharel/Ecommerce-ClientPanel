@@ -9,7 +9,7 @@ export const fetchAllProductAction = () => async (dispatch) => {
   }
 };
 
-export const fetchSingleProductAction = (slug) => async (dispatch) => {
-  const { status, payload } = await fetchSingleProductApi(slug);
+export const fetchSingleProductAction = (_id) => async (dispatch) => {
+  const { status, payload } = await fetchSingleProductApi(_id);
   status === "success" && dispatch(setSelectedProduct(payload));
 };

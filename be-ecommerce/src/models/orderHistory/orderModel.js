@@ -11,3 +11,15 @@ export const getOrder = (filter) => {
 export const getAllOrders = () => {
   return orderSchema.find();
 };
+
+export const updateOrder = (_id, updateData) => {
+  return orderSchema.findByIdAndUpdate(_id, updateData, { new: true });
+};
+
+export const deleteOrder = (id) => {
+  return orderSchema.findByIdAndDelete(id);
+};
+
+export const getOrderWithReviews = () => {
+  return orderSchema.find({ reviewId: { $exists: true, $ne: null } });
+};

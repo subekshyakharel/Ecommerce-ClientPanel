@@ -17,10 +17,11 @@ import { AiOutlineHeart } from 'react-icons/ai'
 import { removeProductFromWishlist, setWishlist } from "../../features/wishlist/wishlistSlice";
 import { AiTwotoneHeart } from 'react-icons/ai'
 import { BsFillHeartFill } from 'react-icons/bs'
+import ReviewSection from "../../component/review/ReviewSection";
 
 const ProductLandingPage = () => {
   const dispatch = useDispatch();
-  const { slug } = useParams();
+  const { _id } = useParams();
   const { selectedProduct } = useSelector((state) => state.productInfo);
   const [showSpinner, setShowSpinner] = useState(true);
   const [showUrl, setShowUrl] = useState(0);
@@ -32,11 +33,11 @@ const ProductLandingPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       setShowSpinner(true);
-      await dispatch(fetchSingleProductAction(slug));
+      await dispatch(fetchSingleProductAction(_id));
       setShowSpinner(false);
     };
     fetchProduct();
-  }, [dispatch, slug]);
+  }, [dispatch, _id]);
 
   const handleOnSize = (e) => {
     setSelectedSize(e.target.value);
@@ -49,11 +50,11 @@ const ProductLandingPage = () => {
       return
     }
     const cartItem = {
-      _id: selectedProduct._id,
+      _id: _id,
       title: selectedProduct.title,
       price: selectedProduct.price,
       image: selectedProduct.imgUrl,
-      slug: slug,
+      slug: selectedProduct.slug,
       // ...selectedProduct,
       size: selectedSize,
       quantity: quantity,
@@ -240,6 +241,11 @@ const ProductLandingPage = () => {
           </>
         )}
       </Container>
+
+      {/* Review Section  */}
+      <div className="mt-5">
+        <ReviewSection id={_id}/>
+      </div>
     </div>
   );
 };

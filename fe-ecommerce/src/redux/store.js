@@ -5,6 +5,8 @@ import userReducer from "../features/user/userSlice.js";
 import cartReducer from "../features/cart/Cartslice.js";
 import wishlistReducer from "../features/wishlist/wishlistSlice.js";
 import orderReducer from "../features/order/orderSlice.js";
+import systemReducer from "../features/system/systemSlice.js";
+import reviewReducer from "../features/review/reviewSlice.js";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 
@@ -27,6 +29,8 @@ const rootReducer = combineReducers({
   userInfo: userReducer,
   categoryInfo: categoryReducer,
   productInfo: productReducer,
+  systemInfo: systemReducer,
+  reviewInfo: reviewReducer,
   orderInfo: persistReducer(orderPersistConfig, orderReducer),
   cartInfo: persistReducer(cartPersistConfig, cartReducer),
   wishlistInfo: persistReducer(wishlistPersistConfig, wishlistReducer),

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchAllCategoriesAction } from './features/category/categoryAction'
 import { fetchAllProductAction } from './features/product/productAction'
+import { ModalWrapper } from './component/modalWrapper/ModalWrapper'
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
     <div>
       <AppRoutes/>
       <ToastContainer/>
+      <ModalWrapper/>
     </div>
   )
 }

@@ -20,10 +20,10 @@ export const fetchAllProductApi = async () => {
   }
 };
 
-export const fetchSingleProductApi = async (slug) => {
+export const fetchSingleProductApi = async (_id) => {
   const obj = {
     method: "get",
-    url: adminApiEp + "/public/" + slug,
+    url: adminApiEp + "/public/" + _id,
   };
   const result = await apiProcessor(obj);
   return result;

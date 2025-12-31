@@ -12,3 +12,14 @@ export const fetchMyOrderApi = async () => {
   const result = await apiProcessor(obj);
   return result;
 };
+
+export const deleteOrderApi = async (id) => {
+  const obj = {
+    method: "delete",
+    url: orderApiEp + "/" + id,
+    isPrivateCall: true,
+    showToast: true,
+  };
+  const result = await apiProcessor(obj);
+  return result;
+};
