@@ -1,7 +1,7 @@
 import { apiProcessor } from "../../services/api";
 
 const apibaseUrl = import.meta.env.VITE_BASE_URL_ADMIN;
-const categoryApiEp = apibaseUrl + "/api/v1";
+const categoryApiEp = apibaseUrl + "/api/v1/category";
 
 // export const postCategoryApi = async (payload) => {
 //   try {

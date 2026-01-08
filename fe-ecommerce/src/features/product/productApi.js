@@ -1,7 +1,7 @@
 import { apiProcessor } from "../../services/api.js";
 
 const apibaseUrl = import.meta.env.VITE_BASE_URL_ADMIN;
-const adminApiEp = apibaseUrl + "/api/v1";
+const adminApiEp = apibaseUrl + "/api/v1/product";
 
 export const fetchAllProductApi = async () => {
   try {
