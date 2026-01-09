@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 const LatestArrival = () => {
   const { allProduct } = useSelector((state) => state.productInfo);
 
+  const latestArrival = [...allProduct].sort((a, b)=> new Date(b.createdAt) - new Date(a.createdAt) )
+
   return (
     <>
       <div className="mb-5 latestArrival">
@@ -13,7 +15,7 @@ const LatestArrival = () => {
         </div>
 
         <div className="d-flex justify-content-center mt-4 flex-wrap gap-4">
-          {allProduct.map((product) => (
+          {latestArrival.slice(0,4).map((product) => (
             <Link to={"/product/" + product._id} key={product._id}>
               <CustomCard
                 

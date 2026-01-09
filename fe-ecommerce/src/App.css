@@ -140,4 +140,15 @@ content: ">";
     justify-content: flex-start;
     gap: 10px;
   }
+
+  .search-bar{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+    .nav-wrapper{
+    display: none;
+  }
 }

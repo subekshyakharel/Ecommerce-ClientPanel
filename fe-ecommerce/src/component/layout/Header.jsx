@@ -59,7 +59,7 @@ const Header = () => {
             </div>
 
             {/* Search Bar */}
-            <div style={{ flexGrow: 1, maxWidth: "500px", margin: "0 20px" }}>
+            <div className="search-bar" style={{ flexGrow: 1, maxWidth: "500px", margin: "0 20px" }}>
               <InputGroup>
                 <Form.Control
                   placeholder="Search products"
