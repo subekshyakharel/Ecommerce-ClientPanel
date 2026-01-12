@@ -46,7 +46,7 @@ const Cart = () => {
       const { status, message, payload } = await pending;
       dispatch(setRecentOrder(payload));
       dispatch(emptyCart());
-      navigate("/user");
+      navigate("/user/order-history");
     }
   };
 

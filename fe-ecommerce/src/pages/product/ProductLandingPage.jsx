@@ -45,7 +45,7 @@ const ProductLandingPage = () => {
 
 
   const handleOnCart = ()=>{
-    if(!selectedSize){
+    if(selectedProduct.size?.length > 0 && !selectedSize){
       toast.error("Please select a size first");
       return
     }
@@ -120,7 +120,7 @@ const ProductLandingPage = () => {
               </Breadcrumb.Item>
               <Breadcrumb.Item
                 linkAs={Link}
-                linkProps={{ to: "/all-products" }}
+                linkProps={{ to: "/allProduct" }}
               >
                 All Product
               </Breadcrumb.Item>
@@ -196,7 +196,7 @@ const ProductLandingPage = () => {
                     <div className="price mt-4 d-flex gap-3">
                       <h5 className="">Price: </h5>
                       <h5 style={{ color: "#706e6eff" }}>
-                        ${selectedProduct.price}
+                        Rs.{selectedProduct.price}
                       </h5>
                     </div>
 
@@ -219,12 +219,12 @@ const ProductLandingPage = () => {
                     <div className="d-grid d-flex justify-content-center gap-3">
                       <Button
                         variant="dark"
-                        disabled={selectedSize === ""}
+                        disabled={selectedProduct.size?.length > 0 && selectedSize === ""}
                         onClick={handleOnCart}
                         className=""
                         style={{width:"400px"}}
                       >
-                        {selectedSize === "" ? "Select Size" : "Add to cart"}
+                        {selectedProduct.size.length >0 ?(selectedSize === "" ? "Select Size" : "Add to cart"): "Add to cart"}
                       </Button>
                       <div onClick={handleOnFav}>
                         {
