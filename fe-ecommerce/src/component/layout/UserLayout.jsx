@@ -4,7 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 import { Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import Sidebar from './SideBar'
+import Sidebar from './SideBar.jsx'
 
 const UserLayout = () => {
     const {user} = useSelector((state)=> state.userInfo)
