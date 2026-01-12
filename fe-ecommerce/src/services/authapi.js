@@ -1,6 +1,7 @@
 import { apiProcessor } from "./api";
 
-const apibaseUrl = "http://localhost:3000";
+const apibaseUrl = import.meta.env.VITE_BASE_URL_CLIENT;
+// || "http://localhost:3000";
 const authApi = apibaseUrl + "/api/v1/auth";
 
 export const signupNewUserApi = async (payload) => {
