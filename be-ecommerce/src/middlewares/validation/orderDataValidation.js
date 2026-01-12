@@ -3,6 +3,7 @@ import {
   LONG_STR_REQ,
   NUMBER_REQ,
   SHORT_STR_REQ,
+  SIZE,
   SIZE_REQ,
 } from "./joiConst.js";
 import { validateData } from "./joiValidation.js";
@@ -14,7 +15,7 @@ export const newOrderDataValidation = (req, res, next) => {
     thumbnail: LONG_STR_REQ,
     productSlug: SHORT_STR_REQ,
     quantity: NUMBER_REQ,
-    size: SIZE_REQ,
+    size: SIZE.allow("").optional(),
     price: NUMBER_REQ,
   };
   validateData({ req, res, next, obj });

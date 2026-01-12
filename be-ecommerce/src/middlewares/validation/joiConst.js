@@ -3,6 +3,7 @@ import Joi from "joi";
 export const SHORT_STR = Joi.string().min(2).max(100);
 export const SHORT_STR_REQ = SHORT_STR.required();
 
+export const SIZE = Joi.string();
 export const SIZE_REQ = Joi.string().required();
 
 export const LONG_STR = Joi.string().min(1).max(5000);

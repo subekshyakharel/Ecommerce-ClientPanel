@@ -31,7 +31,7 @@ export const inserNewOrder = async (req, res, next) => {
       : responseClient({
           req,
           res,
-          message: "Unable to add peoduct!",
+          message: "Unable to add product!",
           statusCode: 401,
         });
   } catch (error) {

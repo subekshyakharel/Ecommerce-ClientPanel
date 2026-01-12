@@ -49,7 +49,7 @@ const orderSchema = new mongoose.Schema(
     },
     size: {
       type: String,
-      required: true,
+      // required: true,
     },
     reviewId: {
       type: mongoose.Schema.Types.ObjectId,
