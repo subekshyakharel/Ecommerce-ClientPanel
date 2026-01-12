@@ -9,7 +9,7 @@ import ProductLandingPage from "../pages/product/ProductLandingPage";
 import UserLayout from "../component/layout/UserLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Allproduct from "../pages/home/Allproduct";
-import CategoryPage from "../pages/category/categoryPage";
+import CategoryPage from "../pages/category/CategoryPage";
 import OrderHistory from "../pages/order/OrderHistory";
 import Profile from "../pages/profile/Profile";
 import LeaveReview from "../pages/review/LeaveReview";
