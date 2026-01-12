@@ -7,7 +7,7 @@ import { loginUserApi } from "../../services/authapi.js";
 import { loginInput } from "../../component/input/LoginInput.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { autoLoginUser, fetchUserAction } from "../../features/user/UserAction.js";
+import { autoLoginUser, fetchUserAction } from "../../features/user/userAction.js";
 import { useEffect, useRef } from "react";
 
 const initialState = {
