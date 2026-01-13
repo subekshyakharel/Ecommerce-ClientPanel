@@ -7,16 +7,23 @@ const CategorySection = () => {
 
 
   return (
-    <div className='mt-4 mb-4'>
-      <div className='d-flex gap-3 flex-wrap'>
-        {parentCategory.map((cat)=> (
-          <div key={cat._id}>
-            <img src={cat.image} alt={cat.parentCategory} className='rounded-circle mb-2' width={200} height={200} style={{objectFit:'cover'}}/>
-            <p className='text-center'>{cat.parentCategory}</p>
-          </div>
-        ))}
+    <div className="mt-4 mb-4">
+  <div className="d-flex gap-3 flex-wrap">
+    {parentCategory.map((cat) => (
+      <div key={cat._id} className="category-item">
+        <div className="category-img-wrapper">
+          <img
+            src={cat.image}
+            alt={cat.parentCategory}
+            className="category-img"
+          />
+        </div>
+        <p className="text-center mt-2">{cat.parentCategory}</p>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+
   );
 };
 

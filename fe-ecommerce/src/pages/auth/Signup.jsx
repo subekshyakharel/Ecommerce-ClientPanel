@@ -5,6 +5,7 @@ import { signupInput } from "../../component/input/SignUpInput.js";
 import useForm from "../../hooks/useForm.js";
 import { signupNewUserApi } from "../../services/authapi.js";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const initialState = {
   fName:"",
@@ -17,6 +18,7 @@ const initialState = {
 
 const Signup = () => {
   const {form, setForm, handleOnChange, passwordErrors} = useForm(initialState);
+  const [isPending, setIsPending] = useState(false)
 
   const handleOnSubmit = async(e)=>{
     e.preventDefault();
@@ -24,10 +26,12 @@ const Signup = () => {
     const {confirmPassword, ...rest} = form;
     if(confirmPassword != rest.password) return alert("Password donot match")
     console.log(form);
+  setIsPending(true)
 
     const {status, message} = await signupNewUserApi(rest);
 
     status=="success" && setForm(initialState)
+    setIsPending(false)
   }
   // console.log(passwordErrors)
 
@@ -42,7 +46,7 @@ const Signup = () => {
                 <CustomInput value={form[input.name] || ""} onChange={handleOnChange} key={i} {...input} />
               ))}
               <div className="d-grid mt-3">
-                <Button variant="dark" type="submit">Signup</Button>
+                <Button variant="dark" disabled={isPending} type="submit">Signup</Button>
               </div>
             </Form>
             <p className="text-center mt-3">Already have an account? <span className="text-primary"><Link to="/login">Login</Link></span></p>

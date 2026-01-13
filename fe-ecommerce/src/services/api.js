@@ -33,7 +33,7 @@ export const apiProcessor = async ({
     });
     if (showToast) {
       toast.promise(responsePending, {
-        pending: "Please wait....",
+        pending: "Please wait....(This might take few seconds)",
       });
     }
     const { data } = await responsePending;

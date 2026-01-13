@@ -173,6 +173,9 @@ const Header = () => {
                     )
                     .map((cat) => (
                       <div key={cat._id}>
+                        <Link to={`/category/${parent.parentCategory
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`}>
                         <img
                           src={cat.image}
                           alt={cat.subCategory}
@@ -180,6 +183,7 @@ const Header = () => {
                           width="100"
                           height="100"
                         />
+                        </Link>
                         <p className="text-center">{cat.subCategory}</p>
                       </div>
                     ))}

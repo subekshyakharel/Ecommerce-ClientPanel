@@ -8,7 +8,7 @@ import { loginInput } from "../../component/input/LoginInput.js";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { autoLoginUser, fetchUserAction } from "../../features/user/userAction.js";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const initialState = {
   fName:"",
@@ -26,6 +26,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const showLoaderRef = useRef(true)
+  const [isPending, setIsPending] = useState(false)
 
   const path = location?.state?.from ?? "/user";
 
@@ -41,22 +42,46 @@ showLoaderRef.current = false
     }
   }, [user._id, navigate, dispatch])
 
-  const handleOnSubmit = async(e)=>{
-    e.preventDefault();
-    if(form.email && form.password){
-          const {payload} = await loginUserApi(form);
-          sessionStorage.setItem("accessJWT", payload.accessJWT)
-          localStorage.setItem("refreshJWT", payload.refreshJWT)
-          console.log(payload)
+  // const handleOnSubmit = async(e)=>{
+  //   e.preventDefault();
+  //   if(form.email && form.password){
+  //         const {payload} = await loginUserApi(form);
+  //         sessionStorage.setItem("accessJWT", payload.accessJWT)
+  //         localStorage.setItem("refreshJWT", payload.refreshJWT)
+  //         console.log(payload)
 
-          dispatch(fetchUserAction());
-    } else {
-      alert("Both input must be provided")
-    }
+  //         dispatch(fetchUserAction());
+  //   } else {
+  //     alert("Both input must be provided")
+  //   }
 
 
-    status=="success" && setForm(initialState)
+  //   status=="success" && setForm(initialState)
+  // }
+  
+
+  const handleOnSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!form.email || !form.password) {
+    return alert("Both input must be provided");
   }
+
+  setIsPending(true); 
+  try {
+    const { payload } = await loginUserApi(form);
+
+    sessionStorage.setItem("accessJWT", payload.accessJWT);
+    localStorage.setItem("refreshJWT", payload.refreshJWT);
+
+    dispatch(fetchUserAction());
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setIsPending(false); // 🔓 enable button
+  }
+};
+
 
   return (
     <div className="main mt-5">
@@ -69,7 +94,14 @@ showLoaderRef.current = false
                 <CustomInput value={form[input.name] || ""} onChange={handleOnChange} key={i} {...input} />
               ))}
               <div className="d-grid mt-3">
-                <Button variant="dark" type="submit">Login</Button>
+                <Button
+  variant="dark"
+  type="submit"
+  disabled={isPending}
+>
+  {isPending ? "Logging in..." : "Login"}
+</Button>
+
               </div>
             </Form>
             <p className="text-center mt-3">Don't have an account? <span className="text-primary"><Link to="/signup">Signup</Link></span></p>

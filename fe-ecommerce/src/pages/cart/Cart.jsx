@@ -84,7 +84,7 @@ const GrandTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 
           <h3>{item.title}</h3>
           <div className="d-flex justify-content-between">
             <h6>Size: <span>{item.size}</span></h6>
-            <p>${item.price}</p>
+            <p>Rs.{item.price}</p>
           </div>
 
           <div className="d-flex justify-content-between mt-2">
@@ -113,9 +113,9 @@ const GrandTotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 
       <div className="p-3 bg-light border rounded shadow">
         <h3>Order Summary</h3>
         <div className="text-end">
-          <p>Sub Total: <span>${GrandTotal}</span></p>
-          <p>Shipping fee: $0</p>
-          <h5>Grand Total: ${GrandTotal}</h5>
+          <p>Sub Total: <span>Rs.{GrandTotal}</span></p>
+          <p>Shipping fee: 0</p>
+          <h5>Grand Total: Rs.{GrandTotal}</h5>
         </div>
         <div className="text-end mt-3">
           {user?._id ? (

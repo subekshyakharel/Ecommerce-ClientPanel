@@ -76,7 +76,7 @@ const ProductLandingPage = () => {
       title: selectedProduct.title,
       price: selectedProduct.price,
       image: selectedProduct.imgUrl,
-      slug: slug,
+      slug: selectedProduct.slug,
       // ...selectedProduct,
       size: selectedSize,
       quantity: quantity,
