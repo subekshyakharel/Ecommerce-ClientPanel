@@ -31,7 +31,7 @@ body{
 /* nav category end here  */
 
 /* Category section start  */
-.categories {
+/* .categories {
   padding-left: 10px;
   align-items: center;
   font-family: "Mozilla Headline", sans-serif;
@@ -51,23 +51,23 @@ body{
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-}
+} */
 
 
 
 /* Tablet */
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .category-item {
     width: 25%;            
   }
-}
+} */
 
 /* Mobile */
-@media (max-width: 576px) {
+/* @media (max-width: 576px) {
   .category-item {
     width: 30%;           
   }
-}
+} */
 /* category section end  */
 
 

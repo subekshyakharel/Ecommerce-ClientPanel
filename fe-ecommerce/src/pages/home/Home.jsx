@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { fetchParentCategoriesAction } from "../../features/category/categoryAction";
 import TopSelling from "./TopSelling";
 import Banner from "./Banner";
+import SwiperCategory from "../../component/swiperCategory/SwiperCategory";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const Home = () => {
             <CustomCarousel />
 
             {/* category section  */}
-            <CategorySection />
+            {/* <CategorySection /> */}
+            <SwiperCategory/>
 
             {/* latest Arrival  */}
             <LatestArrival />
