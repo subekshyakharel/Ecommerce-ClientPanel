@@ -185,6 +185,10 @@ content: ">";
     display: none;
   }
 
+  .banner{
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 1000px) {
