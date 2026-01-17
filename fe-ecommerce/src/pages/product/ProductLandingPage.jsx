@@ -13,10 +13,13 @@ import { Link, useParams } from "react-router-dom";
 import { fetchSingleProductAction } from "../../features/product/productAction";
 import { toast } from "react-toastify";
 import { setCart } from "../../features/cart/Cartslice";
-import { AiOutlineHeart } from 'react-icons/ai'
-import { removeProductFromWishlist, setWishlist } from "../../features/wishlist/wishlistSlice";
-import { AiTwotoneHeart } from 'react-icons/ai'
-import { BsFillHeartFill } from 'react-icons/bs'
+import { AiOutlineHeart } from "react-icons/ai";
+import {
+  removeProductFromWishlist,
+  setWishlist,
+} from "../../features/wishlist/wishlistSlice";
+import { AiTwotoneHeart } from "react-icons/ai";
+import { BsFillHeartFill } from "react-icons/bs";
 import ReviewSection from "../../component/review/ReviewSection";
 
 const ProductLandingPage = () => {
@@ -27,8 +30,9 @@ const ProductLandingPage = () => {
   const [showUrl, setShowUrl] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const {user}= useSelector((state)=>state.userInfo)
-  const {wishlist} = useSelector((state)=> state.wishlistInfo)
+  const { user } = useSelector((state) => state.userInfo);
+  const { wishlist } = useSelector((state) => state.wishlistInfo);
+  const { cart } = useSelector((state) => state.cartInfo);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -43,12 +47,24 @@ const ProductLandingPage = () => {
     setSelectedSize(e.target.value);
   };
 
-
-  const handleOnCart = ()=>{
-    if(selectedProduct.size?.length > 0 && !selectedSize){
+  const handleOnCart = () => {
+    if (selectedProduct.size?.length > 0 && !selectedSize) {
       toast.error("Please select a size first");
-      return
+      return;
     }
+
+    const alreadyInCart = cart.some((item) => {
+      return (
+      item._id === selectedProduct._id &&
+        (selectedProduct.size?.length > 0 ? item.size === selectedSize : true)
+      )
+    });
+
+    if(alreadyInCart){
+      toast.info("Product already in cart. Please increase the quantity there.", {autoClose: 1000})
+return;
+    }
+
     const cartItem = {
       _id: _id,
       title: selectedProduct.title,
@@ -58,45 +74,41 @@ const ProductLandingPage = () => {
       // ...selectedProduct,
       size: selectedSize,
       quantity: quantity,
-    }
+    };
 
-    
-    dispatch(setCart(cartItem))
+    dispatch(setCart(cartItem));
     toast("Product is added in cart");
-    
-  }
+  };
 
-    const isInWishlist = wishlist.some(item => item._id === selectedProduct._id);
-  const handleOnFav = ()=>{
-    if(isInWishlist){
-      dispatch(removeProductFromWishlist(selectedProduct._id))
+  const isInWishlist = wishlist.some(
+    (item) => item._id === selectedProduct._id
+  );
+  const handleOnFav = () => {
+    if (isInWishlist) {
+      dispatch(removeProductFromWishlist(selectedProduct._id));
     } else {
- const favItem = {
-      _id: selectedProduct._id,
-      title: selectedProduct.title,
-      price: selectedProduct.price,
-      image: selectedProduct.imgUrl,
-      slug: selectedProduct.slug,
-      // ...selectedProduct,
-      size: selectedSize,
-      quantity: quantity,
+      const favItem = {
+        _id: selectedProduct._id,
+        title: selectedProduct.title,
+        price: selectedProduct.price,
+        image: selectedProduct.imgUrl,
+        slug: selectedProduct.slug,
+        // ...selectedProduct,
+        size: selectedSize,
+        quantity: quantity,
+      };
+      dispatch(setWishlist(favItem));
+      toast("Product is added in wishlist.");
     }
-    dispatch(setWishlist(favItem))
-    toast("Product is added in wishlist.")
-    }
-   
-  }
+  };
 
+  const handleOnPlus = () => {
+    setQuantity(quantity + 1);
+  };
 
-
-
-  const handleOnPlus = ()=>{
-    setQuantity(quantity+1)
-  }
-
-  const handleOnMinus = ()=>{
-    setQuantity(quantity>1 ?quantity-1 :quantity )
-  }
+  const handleOnMinus = () => {
+    setQuantity(quantity > 1 ? quantity - 1 : quantity);
+  };
 
   return (
     <div>
@@ -118,10 +130,7 @@ const ProductLandingPage = () => {
               <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/" }}>
                 Home
               </Breadcrumb.Item>
-              <Breadcrumb.Item
-                linkAs={Link}
-                linkProps={{ to: "/allProduct" }}
-              >
+              <Breadcrumb.Item linkAs={Link} linkProps={{ to: "/allProduct" }}>
                 All Product
               </Breadcrumb.Item>
               <Breadcrumb.Item active>{selectedProduct.title}</Breadcrumb.Item>
@@ -203,11 +212,19 @@ const ProductLandingPage = () => {
                     <div className="price mt-2 d-flex align-items-center gap-3">
                       <h5 className="mb-0 fw-semibold">Quantity:</h5>
                       <div className="d-flex align-items-center gap-2">
-                        <Button className="px-3" onClick={handleOnMinus} variant="light">
+                        <Button
+                          className="px-3"
+                          onClick={handleOnMinus}
+                          variant="light"
+                        >
                           -
                         </Button>
                         <span className="fs-3">{quantity}</span>
-                        <Button className="px-3" onClick={handleOnPlus} variant="light">
+                        <Button
+                          className="px-3"
+                          onClick={handleOnPlus}
+                          variant="light"
+                        >
                           +
                         </Button>
                       </div>
@@ -219,19 +236,26 @@ const ProductLandingPage = () => {
                     <div className="d-grid d-flex justify-content-center gap-3">
                       <Button
                         variant="dark"
-                        disabled={selectedProduct.size?.length > 0 && selectedSize === ""}
+                        disabled={
+                          selectedProduct.size?.length > 0 &&
+                          selectedSize === ""
+                        }
                         onClick={handleOnCart}
                         className=""
-                        style={{width:"400px"}}
+                        style={{ width: "400px" }}
                       >
-                        {selectedProduct.size.length >0 ?(selectedSize === "" ? "Select Size" : "Add to cart"): "Add to cart"}
+                        {selectedProduct.size.length > 0
+                          ? selectedSize === ""
+                            ? "Select Size"
+                            : "Add to cart"
+                          : "Add to cart"}
                       </Button>
                       <div onClick={handleOnFav}>
-                        {
-                          isInWishlist ? <BsFillHeartFill size={30}/> :<AiOutlineHeart size={30}/>
-                          
-                        }
-                      
+                        {isInWishlist ? (
+                          <BsFillHeartFill size={30} />
+                        ) : (
+                          <AiOutlineHeart size={30} />
+                        )}
                       </div>
                     </div>
                   </div>
@@ -244,7 +268,7 @@ const ProductLandingPage = () => {
 
       {/* Review Section  */}
       <div className="mt-5">
-        <ReviewSection id={_id}/>
+        <ReviewSection id={_id} />
       </div>
     </div>
   );

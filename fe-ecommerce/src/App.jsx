@@ -17,7 +17,7 @@ const App = () => {
   return (
     <div>
       <AppRoutes/>
-      <ToastContainer/>
+      <ToastContainer autoClose={200}/>
       <ModalWrapper/>
     </div>
   )
